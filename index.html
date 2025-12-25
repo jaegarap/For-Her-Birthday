@@ -121,7 +121,7 @@
 
   <div class="card">
     <div class="photo">
-      <img src="foto-kita.jpg" alt="Foto Kita">
+      <img id="slideshow" src="foto1.jpg" alt="Foto Kita">
     </div>
 
     <h1>Happy Birthday</h1>
@@ -142,17 +142,33 @@
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <script>
-    function openLetter() {
-      alert(
-        "Untuk Siska 💜\n\n" +
-        "Terima kasih sudah hadir dan bertahan.\n" +
-        "Semoga ulang tahun ini membawa kebahagiaan\n" +
-        "yang kamu pantas dapatkan.\n\n" +
-        "Aku selalu ada untuk km."
-      );
-    }
-  </script>
+<script>
+  // daftar foto (harus sama dengan nama file di repo)
+  const photos = [
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg",
+  " "foto4.jpg"
+  ];
+
+  let index = 0;
+  const img = document.getElementById("slideshow");
+
+  setInterval(() => {
+    index = (index + 1) % photos.length;
+    img.src = photos[index];
+  }, 3000); // ganti foto tiap 3 detik
+
+  function openLetter() {
+    alert(
+      "Untuk Siska 💜\n\n" +
+      "Terima kasih sudah hadir dan bertahan.\n" +
+      "Semoga ulang tahun ini membawa kebahagiaan\n" +
+      "yang kamu pantas dapatkan.\n\n" +
+      "Aku selalu ada untuk kamu."
+    );
+  }
+</script>
 
 </body>
 </html>
