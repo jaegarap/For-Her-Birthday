@@ -119,9 +119,10 @@
   <div class="sparkle" style="left:70%; animation-delay:1s"></div>
   <div class="sparkle" style="left:90%; animation-delay:3s"></div>
 
-  <div class="card">
+  <!-- INTRO -->
+  <div class="card" id="intro">
     <div class="photo">
-      <img id="slideshow" src="foto1.jpg" alt="Foto Kita">
+      <img src="foto1.jpg" alt="Foto Kita">
     </div>
 
     <h1>Happy Birthday</h1>
@@ -134,25 +135,23 @@
     </p>
 
     <button onclick="openLetter()">Buka Surat 💌</button>
-
     <footer>dibuat khusus buat km — always yours</footer>
   </div>
 
+  <!-- LETTER -->
+  <div id="letter" style="display:none;" class="card">
+    <h2>Untuk Siska Emalinda 💜</h2>
+
+    <img id="photoSlide"
+         src="foto1.jpg"
+         style="width:250px;border-radius:20px;margin:20px 0;">
+
+    <p>
+      Selamat ulang tahun ya sayang.
+      Terima kasih sudah jadi alasan aku senyum,
+      tempat pulang, dan cerita favorit aku setiap hari 🤍
+    </p>
   </div>
-
-<div id="letter" style="display:none;" class="card">
-  <h2>Untuk Siska Emalinda 💜</h2>
-
-  <img id="slideshow"
-       src=""
-       style="width:250px;border-radius:20px;margin:20px 0;">
-
-  <p>
-    Selamat ulang tahun ya sayang.
-    Terima kasih sudah jadi alasan aku senyum,
-    tempat pulang, dan cerita favorit aku setiap hari 🤍
-  </p>
-</div>
 
   <audio autoplay loop>
     <source src="music.mp3" type="audio/mpeg">
@@ -167,13 +166,16 @@
   ];
 
   let currentIndex = 0;
+  let intervalStarted = false;
 
   function openLetter() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("letter").style.display = "block";
 
-    const img = document.getElementById("slideshow");
-    img.src = photos[0];
+    if (intervalStarted) return;
+    intervalStarted = true;
+
+    const img = document.getElementById("photoSlide");
 
     setInterval(() => {
       currentIndex = (currentIndex + 1) % photos.length;
