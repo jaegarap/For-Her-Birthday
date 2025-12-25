@@ -143,30 +143,26 @@
   </audio>
 
 <script>
-  // daftar foto (harus sama dengan nama file di repo)
   const photos = [
     "foto1.jpg",
     "foto2.jpg",
     "foto3.jpg",
-  " "foto4.jpg"
+    "foto4.jpg"
   ];
 
-  let index = 0;
-  const img = document.getElementById("slideshow");
-
-  setInterval(() => {
-    index = (index + 1) % photos.length;
-    img.src = photos[index];
-  }, 3000); // ganti foto tiap 3 detik
+  let currentIndex = 0;
 
   function openLetter() {
-    alert(
-      "Untuk Siska 💜\n\n" +
-      "Terima kasih sudah hadir dan bertahan.\n" +
-      "Semoga ulang tahun ini membawa kebahagiaan\n" +
-      "yang kamu pantas dapatkan.\n\n" +
-      "Aku selalu ada untuk kamu."
-    );
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("letter").style.display = "block";
+
+    const img = document.getElementById("slideshow");
+    img.src = photos[0];
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % photos.length;
+      img.src = photos[currentIndex];
+    }, 2500);
   }
 </script>
 
